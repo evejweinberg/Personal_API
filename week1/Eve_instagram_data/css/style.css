@@ -1,5 +1,10 @@
 /*take away default margin/padding*/
 
+.jumbotron {
+    background-color: pink;
+    color: white;
+}
+
 body {
     margin: 0;
     padding: 0;
