@@ -1,0 +1,35 @@
+{
+    "me": {
+        "name": "Eve Weinberg",
+        "location": "163 Withers st",
+        "age": 34
+    },
+    "you": {
+        "name": "Christopher Solomon",
+        "location": "222 Broderick St",
+        "age": 31
+
+    },
+    "distance": "TBD: gotta get some lat-lon info",
+    "days apart": 33,
+    "things I haven't told you yet": [
+        "i'm not following my diet...like, at all", "i take a lot of naps, but not because i'm lazy", "my apartment has roaches in the summer, but so do most NYC apartments"
+
+    ],
+    "things I tell my friends about you": ["he's sweet", "he's funny", "he's weird in the best way"],
+    "favorite memories": [
+        "trampoline date and dinner in sausilito",
+        "pokemon go in buena vista park",
+        "coding on the couch"
+
+    ],
+    "biggest fears": [
+        "is this all manufactured?",
+        "am i scared of long term dating?",
+        "is life a simulation?"
+    ]
+
+
+
+
+}
