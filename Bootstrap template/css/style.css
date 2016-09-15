@@ -1,15 +1,12 @@
 /*take away default margin/padding*/
 
-.jumbotron {
-    background-color: pink;
-    color: white;
-}
+
 
 body {
     margin: 0;
     padding: 0;
     /*background: #eaeaea;*/
-    background-image: url(../images/bg2.gif);
+    /*background-image: url(../images/bg2.gif);*/
     background-repeat: repeat;
     font-family: 'Copse', serif;
 }
@@ -23,19 +20,7 @@ h1 {
     background-image: url(../images/bg2.gif);
 }
 
-.container {
-    position: relative;
-    display: inline-flex;
-    width: 27%;
-    max-width: 440px;
-    min-width: 200px;
-    height: 300px;
-    border: 1px #acacac solid;
-    margin: 20px;
-    padding: 5px;
-    background-image: url(../images/paper.png);
-    box-shadow: .5px .5px .5px 1px rgba(0, 0, 0, 0.09);
-}
+
 
 .captions {
     position: relative;

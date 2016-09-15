@@ -105,7 +105,7 @@ function displayInfo(captions, likes, imgs) {
         container.setAttribute('id', 'container-' + i);
         $('#container-' + i).addClass('container');
 
-        $('.container').draggable();
+        // $('.container').draggable();
 
         var img = document.createElement('img');
         img.src = imgURLs[i]
