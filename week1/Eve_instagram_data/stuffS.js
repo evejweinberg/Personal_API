@@ -31,9 +31,11 @@ $.ajax({
 
         // sorting function
         function sort (prop, arr) {
+            // console.log('prop' +prop)
             prop = prop.split('.');
-            // console.log(prop)
+            // console.log('prop 2'+prop)
             var len = prop.length;
+            //len == 2
 
             arr.sort(function (a, b) {
                 var i = 0;

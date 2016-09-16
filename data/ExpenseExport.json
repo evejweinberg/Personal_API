@@ -1,0 +1,339 @@
+{
+    "categories": [{
+        "name": "General",
+        "icon": "tag"
+    }, {
+        "name": "Food",
+        "icon": "food"
+    }, {
+        "name": "Snack",
+        "icon": "snack"
+    }, {
+        "name": "Transport",
+        "icon": "bus"
+    }, {
+        "name": "Shopping",
+        "icon": "shopping"
+    }, {
+        "name": "Clothes",
+        "icon": "tshirt"
+    }, {
+        "name": "Digital",
+        "icon": "iphone"
+    }, {
+        "name": "Book",
+        "icon": "book"
+    }, {
+        "name": "Gift",
+        "icon": "gift"
+    }, {
+        "name": "Payment",
+        "icon": "credit-card"
+    }, {
+        "name": "Rental",
+        "icon": "house"
+    }, {
+        "name": "Game",
+        "icon": "controller"
+    }, {
+        "name": "Travel",
+        "icon": "map"
+    }, {
+        "name": "Medical",
+        "icon": "medical"
+    }, {
+        "name": "Education",
+        "icon": "mortar-board"
+    }, {
+        "name": "Alchohol",
+        "icon": "wine"
+    }, {
+        "name": "Home",
+        "icon": "house"
+    }, {
+        "name": "Personal Care",
+        "icon": "medical"
+    }],
+    "expenses": [{
+        "detail": "",
+        "uuid": "96EE1F68-7625-4508-8E50-5FE95F7A6B19",
+        "category": "Food",
+        "datetime": "2016-09-06 21:56:28",
+        "cost": "12",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "C6A5EFCF-985A-4843-9E66-B7EA06A119DF",
+        "category": "Alchohol",
+        "datetime": "2016-09-05 21:58:17",
+        "cost": "15",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "C443A29A-6A83-4F1F-B115-395265296B58",
+        "category": "Food",
+        "datetime": "2016-09-05 21:58:27",
+        "cost": "15",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "6261EADD-5941-4FEC-BB09-DF184533FB35",
+        "category": "Food",
+        "datetime": "2016-09-05 21:58:43",
+        "cost": "7",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "6CF38A57-42A3-45A3-8DB6-F3087462B891",
+        "category": "Home",
+        "datetime": "2016-09-07 08:23:57",
+        "cost": "17",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "AFDE213C-8914-4163-96D4-82F486768C26",
+        "category": "Home",
+        "datetime": "2016-09-07 08:24:07",
+        "cost": "11",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "7E404371-393E-4B2F-B2BC-183C75292AF5",
+        "category": "Education",
+        "datetime": "2016-09-07 08:24:19",
+        "cost": "10",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "AE189DDD-80E4-4D6E-ACDD-3DBC1A2FAF9E",
+        "category": "Shopping",
+        "datetime": "2016-09-07 15:48:40",
+        "cost": "95",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "DEA1FF26-B7EA-4434-8D21-E684F5E7B745",
+        "category": "Education",
+        "datetime": "2016-09-07 16:01:05",
+        "cost": "20",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "97562924-3352-4A9A-A21C-0BC4846F7CB8",
+        "category": "Alchohol",
+        "datetime": "2016-09-07 08:55:26",
+        "cost": "14",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "299D84A4-0C65-4258-B70D-34DEE7F01594",
+        "category": "Food",
+        "datetime": "2016-09-08 09:54:04",
+        "cost": "5",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "4F8A1949-CD78-4BD0-94BE-0A75CE6CC817",
+        "category": "Food",
+        "datetime": "2016-09-08 17:08:32",
+        "cost": "9",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "146E3349-8743-4276-9235-8C139222FB4B",
+        "category": "Alchohol",
+        "datetime": "2016-09-08 01:33:34",
+        "cost": "11",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "11EBC3D0-06D4-4765-9997-4F77762F3157",
+        "category": "Transport",
+        "datetime": "2016-09-08 01:33:52",
+        "cost": "3",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "A050DC8D-0B9D-425F-B5E2-20107E8245A5",
+        "category": "Transport",
+        "datetime": "2016-09-08 08:55:37",
+        "cost": "2.75",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "3FB68514-2DF1-46F1-BA08-A1E23CA58503",
+        "category": "Food",
+        "datetime": "2016-09-09 10:16:35",
+        "cost": "9",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "CB5550DA-BEE8-4FE6-BDE7-7C8ECB3DC0D1",
+        "category": "Food",
+        "datetime": "2016-09-09 15:55:57",
+        "cost": "14",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "157A9323-EA0D-4DD7-88D0-217556C5D34C",
+        "category": "Home",
+        "datetime": "2016-09-09 15:57:03",
+        "cost": "3",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "44F369CC-4983-4264-BF7B-84231B3E9045",
+        "category": "Alchohol",
+        "datetime": "2016-09-09 21:58:02",
+        "cost": "15",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "1B515B9B-C6E9-4272-A511-B4336196FD80",
+        "category": "Food",
+        "datetime": "2016-09-09 22:06:51",
+        "cost": "45",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "BF9DD0F3-48C3-4ECE-B766-BA3871251EC0",
+        "category": "Transport",
+        "datetime": "2016-09-09 02:34:30",
+        "cost": "14",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "C80646FD-A1B3-4AA1-8BE9-3433744FE241",
+        "category": "Clothes",
+        "datetime": "2016-09-10 12:14:45",
+        "cost": "9",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "2C06DAC5-33EA-49DD-8476-F38E2DF2066E",
+        "category": "Food",
+        "datetime": "2016-09-10 13:59:20",
+        "cost": "14",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "F6B21580-AD2E-4771-9EFA-7C3BC288275B",
+        "category": "Food",
+        "datetime": "2016-09-11 12:08:51",
+        "cost": "24",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "D0922349-7E55-4AE4-91F4-12AA7BEE8FEB",
+        "category": "Home",
+        "datetime": "2016-09-11 12:08:57",
+        "cost": "16",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "70A4159B-334C-4D01-9D0E-E26D9B1D13DE",
+        "category": "Personal Care",
+        "datetime": "2016-09-11 16:51:06",
+        "cost": "7",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "EEAD0985-E700-4CE4-BBAD-747592A145BA",
+        "category": "Personal Care",
+        "datetime": "2016-09-11 16:53:25",
+        "cost": "10",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "5AE31321-EA02-4034-A72C-ABFDDF9AF8D1",
+        "category": "Food",
+        "datetime": "2016-09-11 16:56:08",
+        "cost": "3",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "4981E95B-FA4C-4FDE-952F-D40C14ADDBEA",
+        "category": "Food",
+        "datetime": "2016-09-11 22:53:44",
+        "cost": "11",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "6E136D4D-7006-4E71-B925-D40639C8291A",
+        "category": "Food",
+        "datetime": "2016-09-12 14:14:43",
+        "cost": "4",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "02BBF47F-DB46-48E8-A5F2-8612DE2C803E",
+        "category": "Education",
+        "datetime": "2016-09-12 14:14:49",
+        "cost": "31",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "8D170502-0588-4E6E-A30D-885B76598E29",
+        "category": "Alchohol",
+        "datetime": "2016-09-12 19:30:45",
+        "cost": "10",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "601E6662-9BAA-42BC-9339-896BA4AED6C7",
+        "category": "Alchohol",
+        "datetime": "2016-09-12 05:27:27",
+        "cost": "30",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "C0BE26F9-566A-442F-8A41-FB06696852F1",
+        "category": "Food",
+        "datetime": "2016-09-12 05:27:39",
+        "cost": "15",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "E9E10BA9-415D-484C-8C7B-0A4929048588",
+        "category": "Education",
+        "datetime": "2016-09-13 11:32:07",
+        "cost": "11",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "B1DA0F97-32F1-4B00-8F03-0097639A5E0D",
+        "category": "Food",
+        "datetime": "2016-09-13 20:38:27",
+        "cost": "10",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "3A9814BD-64F7-48FA-8D64-73EDF5F83CFC",
+        "category": "Food",
+        "datetime": "2016-09-14 20:16:23",
+        "cost": "9",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "0BC0AC65-C2B9-40FD-A1EA-36500EA5AD7C",
+        "category": "Food",
+        "datetime": "2016-09-14 20:16:33",
+        "cost": "16",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "0F4CF246-79B7-43DA-B3EC-31825883ED36",
+        "category": "Alchohol",
+        "datetime": "2016-09-14 20:16:40",
+        "cost": "13",
+        "timezone": "America\/New_York"
+    }, {
+        "detail": "",
+        "uuid": "6D2A1792-458D-4988-941E-CC33A65DB51D",
+        "category": "Alchohol",
+        "datetime": "2016-09-14 00:27:29",
+        "cost": "5",
+        "timezone": "America\/New_York"
+    }],
+    "version": "1.1"
+}
