@@ -1,0 +1,40 @@
+{
+    "contact": {
+
+        "name": "Lynn",
+        "location": "Atlanta",
+        "online": true,
+        "headshot": "lynn.png",
+        "broadcast": "Heyo!"
+
+    },
+
+    "contact": {
+
+        "name": "Wink",
+        "location": "Atlanta",
+        "online": false,
+        "headshot": "dad.png",
+        "broadcast": "Heyo!"
+
+    },
+    "contact": {
+
+        "name": "Gabriel",
+        "location": "Paoli",
+        "online": true,
+        "headshot": "yegg.png",
+        "broadcast": "Heyo!"
+
+
+    },
+    "contact": {
+
+        "name": "null",
+        "location": "null",
+        "online": false,
+        "headshot": "blank.png",
+        "broadcast": "null"
+
+    }
+}
