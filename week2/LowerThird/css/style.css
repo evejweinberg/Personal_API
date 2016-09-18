@@ -20,6 +20,6 @@ body {
     max-width: 60px;
     height: auto;
     border-radius: 100px;
-    border: ridge blue 3px;
+    /*border: ridge blue 3px;*/
     margin-top: 10px;
 }
