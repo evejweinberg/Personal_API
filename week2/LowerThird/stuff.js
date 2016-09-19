@@ -8,7 +8,7 @@ console.log('js page was found fuck you delta')
 function init(){
   console.log('init was called')
   // the app is open
-var contacts;
+// var contacts;
   var appOpen = true;
   //create main container and add it to the body
   var ltContainer = document.createElement('div');
@@ -205,12 +205,12 @@ function addBlanks(){
 
   //build out the 6 contacts and populate their fields from the json data
   var x=0
-  while (x < 6){
+  while (x < window.CONTACTS.contacts.length){
   var person = '<div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 centered" id="contact'+x+'">'+
       '<div class="card">'+
-        '<img class="headshot" id="headshot'+x+'" src="images/blank.png">'+
-          '<p>'+contacts.contact1.name+'</p>'+
-        '<div class = "infobox animateUp" style="display:none" id="infobox'+x+'" <p id="name'+contacts.contact1.name+'" class="names">'+x+'</p><br><p id="location'+x+'" class="locations">'+x+'</p><br></div>'+
+        '<img class="headshot" id="headshot'+x+'" src="images/'+window.CONTACTS.contacts[x].headshot+'">'+
+          '<p>'+x+'</p>'+
+        '<div class = "infobox animateUp" style="display:none" id="infobox'+x+'" <p id="name'+x+'" class="names">'+window.CONTACTS.contacts[x].name+'</p><br><p id="location'+x+'" class="locations">'+window.CONTACTS.contacts[x].location+'</p><br></div>'+
 
            '</div>'+
             '</div>';
@@ -227,70 +227,9 @@ function addBlanks(){
 } //adding cards is over
 
 function getTheJson(){
-
-  contacts= {
-      "contact1": {
-
-          "name": "Lynn",
-          "location": "Atlanta",
-          "online": true,
-          "headshot": "lynn.png",
-          "broadcast": "Heyo!",
-          "isopen": false
-
-      },
-
-      "contact2": {
-
-          "name": "Wink",
-          "location": "Atlanta",
-          "online": false,
-          "headshot": "dad.png",
-          "broadcast": "Heyo!",
-          "isopen": false
-
-      },
-      "contact3": {
-
-          "name": "Gabriel",
-          "location": "Paoli",
-          "online": true,
-          "headshot": "yegg.png",
-          "broadcast": "Heyo!",
-          "isopen": false
+  console.log(window.CONTACTS)
 
 
-      },
-      "contact4": {
-
-          "name": "null",
-          "location": "null",
-          "online": false,
-          "headshot": "blank.png",
-          "broadcast": "null",
-          "isopen": false
-
-      }
-  }
-
-  console.log(contacts)
-  // var obj = JSON.parse(contacts);
-  // console.log(obj)
-
-  // $.ajax({
-	//     url: 'data/contacts.json',
-	//     type: 'GET',
-	//     failure: function(err){
-	//     	return alert ("Could not find that location");
-	//     },
-	//     success: function(response) {
-	//       console.log('got the json');
-	//       console.log(response);
-  //
-	//       if(response.status=="ZERO_RESULTS") return alert ("Could not find that location");
-  //       return response
-	//     }
-	// });
 }
 
 
