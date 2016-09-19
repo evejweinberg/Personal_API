@@ -5,7 +5,8 @@
         "location": "Atlanta",
         "online": true,
         "headshot": "lynn.png",
-        "broadcast": "Heyo!"
+        "broadcast": "Heyo!",
+        "isopen": false
 
     },
 
@@ -15,7 +16,8 @@
         "location": "Atlanta",
         "online": false,
         "headshot": "dad.png",
-        "broadcast": "Heyo!"
+        "broadcast": "Heyo!",
+        "isopen": false
 
     },
     "contact": {
@@ -24,7 +26,8 @@
         "location": "Paoli",
         "online": true,
         "headshot": "yegg.png",
-        "broadcast": "Heyo!"
+        "broadcast": "Heyo!",
+        "isopen": false
 
 
     },
@@ -34,7 +37,8 @@
         "location": "null",
         "online": false,
         "headshot": "blank.png",
-        "broadcast": "null"
+        "broadcast": "null",
+        "isopen": false
 
     }
 }
