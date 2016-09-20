@@ -15,7 +15,7 @@ var newList = []
 
 
 
-//++=============ATTEMP # 1 =========================
+
 function getCategories(a) {
   var empty = {};
   return a.filter(function(item) {
@@ -24,7 +24,6 @@ function getCategories(a) {
     return item.category
   })
 }
-
 
 function subtotal(list, category) {
   return list.map(function(el) {
@@ -49,30 +48,43 @@ $.getJSON("../../data/ExpenseExport.json", function(data) {
       'category': categoryList[t],
       'cost': subtotal(dataArray, categoryList[t])
     })
-
-
   }
-
 
   init();
   animate();
-
-
 
 });
 
 
 function init() {
 
-  console.log('init')
+  // console.log('init')
 
-  camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+  camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);
   camera.position.set(0, 10, 40);
 
   scene = new THREE.Scene();
-  scene.add(new THREE.AmbientLight(0x222233));
-  scene.add(new THREE.AmbientLight(0x222233));
-  // scene.add(camera)
+  scene.add(new THREE.AmbientLight(0xffffff));
+  scene.add(new THREE.AmbientLight(0xffffff));
+  // renderer = new THREE.WebGLRenderer();
+
+  renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  // renderer.setClearColor(new THREE.Color(0xfffff, 0.0));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.shadowMap.enabled = true;
+
+  document.body.appendChild(renderer.domElement);
+
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 10, 0);
+  controls.update();
+
+  stats = new Stats();
+  document.body.appendChild(stats.dom);
+
 
   // Lights
 
@@ -96,15 +108,19 @@ function init() {
 
   }
 
-  pointLight = createLight(0x00ff00);
+  pointLight = createLight(0xffffff);
   scene.add(pointLight);
 
-  pointLight2 = createLight(0xff0000);
+  var dirLight = new THREE.DirectionalLight();
+      dirLight.position.set(25, 23, 15);
+      scene.add(dirLight);
+
+  pointLight2 = createLight(0xffffff);
   scene.add(pointLight2);
 
-  var geometry = new THREE.PlaneGeometry(50, 50, 32);
+  var geometry = new THREE.PlaneGeometry(50, 50, 62);
   var material = new THREE.MeshLambertMaterial({
-    color: 0xff0000,
+    color: 0xffffff,
     // shininess: 100,
     // specular: 0x222222
   });
@@ -133,18 +149,19 @@ function init() {
   for (var i = 0; i < newList.length; i++) {
 
 
-
+    var color = new THREE.Color();
+    color.setHSL( Math.random(1), .64, .59 );
 
     var height = newList[i].cost
     var geometry = new THREE.BoxGeometry(2,
       height, 2);
     geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, height / 2, 0));
     var material = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(Math.random(1)),
+      color: color
 
     })
     var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = 4 * i;
+    mesh.position.x = -10+ 4 * i;
     mesh.receiveShadow = true;
 
     scene.add(mesh)
@@ -153,22 +170,7 @@ function init() {
 
 
 
-  renderer = new THREE.WebGLRenderer({
-    antialias: true
-  });
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.shadowMap.enabled = true;
-  // renderer.shadowMapEnabled = true;
-  renderer.shadowMap.type = THREE.BasicShadowMap;
-  document.body.appendChild(renderer.domElement);
 
-  controls = new THREE.OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 10, 0);
-  controls.update();
-
-  stats = new Stats();
-  document.body.appendChild(stats.dom);
 
   //
 
