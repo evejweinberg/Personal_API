@@ -200,7 +200,7 @@ function notHoveringOverHeadshot(x){
 
 
 function addBlanks(){
-  getTheJson();
+
 
 
   //build out the 6 contacts and populate their fields from the json data
@@ -226,11 +226,6 @@ function addBlanks(){
           }
 } //adding cards is over
 
-function getTheJson(){
-  console.log(window.CONTACTS)
-
-
-}
 
 
 
