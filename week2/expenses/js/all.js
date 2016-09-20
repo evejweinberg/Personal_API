@@ -38,7 +38,7 @@ function subtotal(list, category) {
     });
 }
 
-$.getJSON("../assets/ExpenseExport.json", function(data) {
+$.getJSON("assets/ExpenseExport.json", function(data) {
   var dataArray = data.expenses
   var categoryList = getCategories(dataArray)
     // console.log(dataArray)
