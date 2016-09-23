@@ -1,11 +1,4 @@
-// var loadedJSON;
-// var pregancyData;
-var graphics = []; // will hold our embryo objects
-// var startingEmbryo = 1; // startingEmbryo is 1 pixel
-var dims;
-var colors = []
 
-var total = 6;
 
 function preload() {
   // var url = 'data/data.json';
@@ -27,93 +20,76 @@ function setup() {
   cnv.position(0,0);
 	background(color('#FFFFA2'));
   colors = [color('#FFFFA2'),color('#271A61'), color('#D4B8FF'),color('#FF6777'), color('#3DCCFF'), color('#BFFABC')]
-console.log(windowWidth)
+  console.log(windowWidth)
   dims = (windowWidth/(total/2))
 
 	createAllVis();
-	// console.log(embryos);
+  console.log(graphics)
+
 }
 
 function draw() {
 	background(colors[2]);
 
 	for(var i=0; i < total; i++){
+
 		graphics[i].predata();
+    console.log(graphics[i].started)
+    if (graphics[i].started==true){
+
+      console.log('started ' + i)
+      graphics[i].readyState();
+    }
 		// embryos[i].isActivated();
 		// if(graphics[i].isActive==true) graphics[i].showResults();
 	}
 }
 
-function createAllVis(){
 
-	for (var i = 0; i < total; i++) {
-			graphics.push(new Vis(i,false));
-		}
+//this gets called once in setup
+function createAllVis(){
+  for (var i = 0; i < total; i++) {
+    if (i<3){
+      graphics.push(new Vis(i,i*dims, 0, false,questions[i]));
+      } else {
+        graphics.push(new Vis(i,[i%3]*dims, dims, false,questions[i]));
+      }
+    }
 }
 
 // Embryo Class
-function Vis(num, started){
+function Vis(num, x,y,started, question){
 	this.num = num;
   this.started = started
+  this.question = question
+	this.x = x;
+	this.y = y;
+  var centerX = x+(dims/2)
+  var centerY = y+(dims/2)
 
-
-
-	// this.fruit = fruit;
-	// this.inches = inches;
-	// this.pounds = pounds;
-	// this.x = x;
-	// this.y = y;
-	// this.isActive = false;
-	// this.stomachSize = 100;
-
-	// here we are setting the color using a self-executing anonymous function
-	// this.color = (function() {
-	// 	if(week<24) return redColor; // by default red
-	// 	if(week>=24&&week<26) return yellowColor;
-	// 	if(week>=26) return greenColor;
-	// })();
-
-	// here we are setting the size using a self-executing anonymous function
-	// this.size = (function(){
-	// 	if(!inches) return startingEmbryo;
-	// 	return map(inches, 0.13, 21, startingEmbryo, 100);
-	// })();
 
   this.resized = function(){
     dims = (windowWidth/(total/2))
+    //change x and y
 
   }
 
-	// this function draws the embryo;
+	//background
 	this.predata = function(){
-    textAlign(CENTER);
+    textAlign(LEFT);
 		noStroke();
 		fill(colors[num]);
-    if (num<3){
-
-      rect(num*dims, 0, dims, dims)
-      fill(colors[(num+1)%total])
-      textSize(dims*.7);
-      text(num+1,dims/2+num*dims,dims*.7);
-    } else {
-      rect((num-3)*dims, dims, dims, dims)
-      fill(colors[(num+1)%total])
-      textSize(dims*.7);
-      text(num+1, dims/2+(num-3)*dims,dims+dims*.7);
-    }
-
-
+    rect(x, y, dims, dims)
 
 	}
 
-	// check if mouse is currently over
-	this.isActivated = function(){
-		//reset to false
-		this.isActive = false;
-		if(mouseIsPressed && mouseX>=this.x-this.stomachSize && mouseX<=this.x+this.stomachSize && mouseY>=this.y-this.stomachSize && mouseY<=this.y+this.stomachSize){
-			// return this.isActive = true;
-		}
-		// return this.isActive = false;
+	// add this if audience is ready for the question
+	this.readyState = function(){
+    fill(colors[(num+1)%total])
+    rect(centerX,centerY,20,10)
+    textSize(dims*.1);
+    text(question,x+(dims*.06),y+(dims*.1));
+    started = true
 	}
 
 	// show the information in a popup

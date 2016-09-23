@@ -1,6 +1,13 @@
 
 var totalNum = [1,2,3,4,5,6];
 
+var graphics = []; // will hold our embryo objects
+var dims;
+var colors = []
+var questions = ['Where did you get \nyour data for the \nmidterm from?', 'Where?', 'Did you use \n javascript before ITP?','Would you rather learn D3 or ChartJS?', 'Favorite Event Handler?', 'How tired are you?']
+
+var total = 6;
+
 window.addEventListener("load", init);
 window.addEventListener("resize", checkSizes);
 
@@ -34,18 +41,21 @@ function Run0(){
   // $('#box0').fadeOut()
   $('#box0').css("background-color", "transparent")
   // $('#box0').css('z-index', 310);
+  graphics[0].started=true
 }
 
 function Run1(){
   $('#box1 > p').fadeOut()
   // $('#box1').css("background-color", "");
   $('#box1').css("background-color", "transparent")
-    // $('#box1').fadeOut()
+  graphics[1].started=true
+
 }
 
 function Run2(){
   $('#box2 > p').fadeOut()
   $('#box2').css("background-color", "transparent")
+  graphics[2].started=true
 
   // $('#box2').parent.css("background-color", "transparent")
     // $('#box1').fadeOut()
@@ -54,12 +64,14 @@ function Run2(){
 function Run3(){
   $('#box3 > p').fadeOut()
   $('#box3').css("background-color", "transparent")
+    graphics[3].started=true
 
 }
 
 function Run4(){
   $('#box4 > p').fadeOut()
   $('#box4').css("background-color", "transparent")
+    graphics[4].started=true
 
 
 }
@@ -67,6 +79,7 @@ function Run4(){
 function Run5(){
   $('#box5 > p').fadeOut()
   $('#box5').css("background-color", "transparent")
+    graphics[5].started=true
 
 
 }
