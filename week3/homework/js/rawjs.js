@@ -1,5 +1,16 @@
 
 var totalNum = [1,2,3,4,5,6];
+var q1Answers=['internet', 'nyc.gov', 'the place where', 'not sure yet still deciding', "googles traffic data", 'suuuuuuuuuuup long words', 'goverment free data', 'five thiry eight','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where']
+var q2Answers=[8,8]
+var q3Answers=[]
+var q4Answers=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+var q4Radius= [160,160,160,160,160,160,160,160,160,160,160,160,160,160,160,160]
+var q5Answers=[]
+var q6Answers=[]
+var q2D3 = 6
+var q2CJS = 8
+var angle = 0
+
 
 var graphics = []; // will hold our embryo objects
 var dims;
@@ -21,7 +32,6 @@ for (i in totalNum){
   document.getElementById("box3").addEventListener("click", Run3, false);
   document.getElementById("box4").addEventListener("click", Run4, false);
   document.getElementById("box5").addEventListener("click", Run5, false);
-  // document.getElementById("box6").addEventListener("click", Run6, false);
 }
 
 function init(){
@@ -37,16 +47,13 @@ function checkSizes(){
 }
 
 function Run0(){
-  $('#box0 > p').fadeOut()
-  // $('#box0').fadeOut()
+  $('#box0 > p').fadeOut();
   $('#box0').css("background-color", "transparent")
-  // $('#box0').css('z-index', 310);
   graphics[0].started=true
 }
 
 function Run1(){
   $('#box1 > p').fadeOut()
-  // $('#box1').css("background-color", "");
   $('#box1').css("background-color", "transparent")
   graphics[1].started=true
 
@@ -57,8 +64,6 @@ function Run2(){
   $('#box2').css("background-color", "transparent")
   graphics[2].started=true
 
-  // $('#box2').parent.css("background-color", "transparent")
-    // $('#box1').fadeOut()
 }
 
 function Run3(){
