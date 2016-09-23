@@ -1,0 +1,13 @@
+-webkit-clip-path: polygon(0 0,100% 0,100% 100%,0 87%);
+    clip-path: polygon(0 0,100% 0,100% 100%,0 87%);
+    position: absolute;
+
+
+    DOM event listeners:
+    http://www.w3schools.com/jsref/dom_obj_event.asp
+
+    object.addEventListener("keydown", myScript);
+// not onkeydown
+
+object.addEventListener("change", myScript);
+// not onchange
