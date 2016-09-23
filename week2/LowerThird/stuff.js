@@ -2,7 +2,7 @@
 //on load, call init()
 window.addEventListener("load", init);
 
-console.log('js page was found fuck you delta')
+// console.log('js page was found fuck you delta')
 
 
 function init(){

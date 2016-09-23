@@ -1,7 +1,7 @@
-// var loadedJSON;
-// var pregancyData;
+var loadedJSON;
+var pregancyData;
 var graphics = []; // will hold our embryo objects
-// var startingEmbryo = 1; // startingEmbryo is 1 pixel
+var startingEmbryo = 1; // startingEmbryo is 1 pixel
 var dims;
 var colors = []
 
@@ -23,11 +23,11 @@ for (i in graphics){
 
 function setup() {
 	// pregancyData = loadedJSON.pregnancy;
-  var cnv = createCanvas(windowWidth,windowHeight);
-  cnv.position(0,0);
+
+	createCanvas(windowWidth,windowHeight);
 	background(color('#FFFFA2'));
   colors = [color('#FFFFA2'),color('#271A61'), color('#D4B8FF'),color('#FF6777'), color('#3DCCFF'), color('#BFFABC')]
-console.log(windowWidth)
+// console.log(windowWidth)
   dims = (windowWidth/(total/2))
 
 	createAllVis();
@@ -80,6 +80,7 @@ function Vis(num, started){
 	// })();
 
   this.resized = function(){
+    console.log('new dims' + dims)
     dims = (windowWidth/(total/2))
 
   }
@@ -88,11 +89,12 @@ function Vis(num, started){
 	this.predata = function(){
     textAlign(CENTER);
 		noStroke();
-		fill(colors[num]);
+		fill(colors[num%colors.length]);
     if (num<3){
 
       rect(num*dims, 0, dims, dims)
       fill(colors[(num+1)%total])
+      // ellipse()
       textSize(dims*.7);
       text(num+1,dims/2+num*dims,dims*.7);
     } else {
@@ -118,16 +120,7 @@ function Vis(num, started){
 
 	// show the information in a popup
 	this.showResults = function(){
-		// fill(255,255,255,200);
-		// ellipse(this.x,this.y,this.stomachSize,this.stomachSize);
-		// textAlign(CENTER);
-		// textSize(24);
-		// fill(primaryColor);
-		// text(this.week,this.x,this.y);
-		// textSize(14);
-		// text(this.fruit,this.x,this.y+18);
-		// textSize(10);
-		// if(this.inches) text(this.inches + ' inches',this.x,this.y+30);
+
 	}
 
 }
