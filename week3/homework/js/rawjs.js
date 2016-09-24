@@ -1,21 +1,42 @@
 
+//some test numbers that will get replaced
 var totalNum = [1,2,3,4,5,6];
-var q1Answers=['internet', 'nyc.gov', 'the place where', 'not sure yet still deciding', "googles traffic data", 'suuuuuuuuuuup long words', 'goverment free data', 'five thiry eight','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where']
-var q2Answers=[8,8]
-var q3Answers=[]
-var q4Answers=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-var q4Radius= [160,160,160,160,160,160,160,160,160,160,160,160,160,160,160,160]
-var q5Answers=[]
-var q6Answers=[]
-var q2D3 = 6
-var q2CJS = 8
+var q1Answers=['', '', 'the place where', 'not sure yet still deciding', "googles traffic data", 'suuuuuuuuuuup long words', 'goverment free data', 'five thiry eight','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where']
+var q2Answers=[1,1,1,1,0,1,0,1,0,1,0,1,1,0,1,0]
+var q2Results=[8,8]
+var q3Answers=[1,1,1,1,0,1,0,1,0,1,0,1,1,0,1,0]
+var q4Answers=[0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0] //quiz right or wrong
+var q4Results=[8,8]
+var q5Answers=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+var q5Radius= [160,140,10,160,100,160,160,160,160,160,160,160,160,160,160,160]
+var q6Answers=[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9] //how tired
+var eyeoffset = 60
+var pupilRad = 60
+var eyeBagPullMax = 100;
+var bagPull,tiredAvg,q2D3,q2CJS;
 var angle = 0
 
 
-var graphics = []; // will hold our embryo objects
+//----------calculate results//-----------//
+tiredAvg = getAvg(q6Answers)
+
+// q2Results[0] = q2Answers.filter(function(x){return x==1}).length
+// q2Results[1] = q2Answers.filter(function(x){return x==0}).length
+
+// q4Results[0] = q4Answers.filter(function(x){return x==1}).length
+// q4Results[1] = q4Answers.filter(function(x){return x==0}).length
+
+// q2D3 = q3Answers.filter(function(x){return x==0}).length
+// q2CJS = q3Answers.filter(function(x){return x==1}).length
+
+q5Radius = q5Answers.map(function(x){return (x/10)*150})
+
+
+
+var graphics = []; // will hold each rectangle visualization
 var dims;
 var colors = []
-var questions = ['Where did you get \nyour data for the \nmidterm from?', 'Where?', 'Did you use \n javascript before ITP?','Would you rather learn D3 or ChartJS?', 'Favorite Event Handler?', 'How tired are you?']
+var questions = ['Where did you get \nyour data for the \nmidterm from?', 'Did you use \n javascript before ITP?', 'Would you rather learn D3 or ChartJS?', 'Favorite Event Handler?', 'How well do you \nknow javascript?','How tired are you?']
 
 var total = 6;
 
@@ -24,9 +45,9 @@ window.addEventListener("resize", checkSizes);
 
 
 for (i in totalNum){
+// document.getElementById('"box'+ i+'"').addEventListener("click", Run+i, false);
 
-  var el = document.getElementById("box0");
-  el.addEventListener("click", Run0, false);
+  document.getElementById("box0").addEventListener("click", Run0, false);
   document.getElementById("box1").addEventListener("click", Run1, false);
   document.getElementById("box2").addEventListener("click", Run2, false);
   document.getElementById("box3").addEventListener("click", Run3, false);
@@ -38,13 +59,17 @@ function init(){
 }
 
 function checkSizes(){
-  console.log('checking')
+  // resizze all javascript boxes but not p5 boxes
   var t = $(window).height()/2
   $(".box").height(t);
   $(".box > p").height(t*.7)
-
-
 }
+
+// function Changetop5(el){
+//   $(el).fadeOut();
+//   $(el).css("background-color", "transparent")
+//   graphics[0].started=true
+// }
 
 function Run0(){
   $('#box0 > p').fadeOut();
@@ -77,14 +102,19 @@ function Run4(){
   $('#box4 > p').fadeOut()
   $('#box4').css("background-color", "transparent")
     graphics[4].started=true
-
-
 }
 
 function Run5(){
   $('#box5 > p').fadeOut()
   $('#box5').css("background-color", "transparent")
     graphics[5].started=true
+}
 
 
+function getAvg(arrayInput){
+  var sum = arrayInput.reduce(function(a, b) { return a + b; });
+  console.log(sum)
+  var avg = sum / arrayInput.length;
+console.log(sum)
+  return avg
 }
