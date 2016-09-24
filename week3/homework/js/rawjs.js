@@ -1,7 +1,7 @@
 
 //some test numbers that will get replaced
 var totalNum = [1,2,3,4,5,6];
-var q1Results=['', '', 'the place where', 'not sure yet still deciding', "googles traffic data", 'suuuuuuuuuuup long words', 'goverment free data', 'five thiry eight','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where']
+var q1Results=['', '', 'the place where', 'not sure yet still deciding', "googles traffic data", 'suuuuuuuuuuup long words', 'goverment free data', 'five thiry eight','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', '','','','','']
 var q2Answers=[1,1,1,1,0,1,0,1,0,1,0,1,1,0,1,0]
 var q2Results=[8,8]
 var q3Answers=[1,1,1,1,0,1,0,1,0,1,0,1,1,0,1,0]

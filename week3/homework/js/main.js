@@ -54,14 +54,14 @@ function updateAllData(data) {
         q1Results[i] = data[i]['Q1: Where did you get your data from?'];
         q2Answers[i] = data[i]['Q2:Did you do any JS before ITP?'];
         q3Answers[i] = data[i]['Q3: Would you rather do D3 or Chart JS?'];
-        q4Answers[i] = data[i]["Q4: Whats'the javascript version of this?"];
+        q4Answers[i] = data[i]["Q4: Whats' the correct javascript version of this jquery thing?"];
         q5Answers[i] = data[i]["Q5: How good at javascript are you?"];
-        //
+        //q4Answers
         // if (q4Answers[i] == "el.style.display='none'"){
         //
         // }
 
-        // console.log(q1Results)
+        console.log(q4Answers[i])
         // console.log(data[i]['Q3: Would you rather do D3 or Chart JS?'])
 
     }
@@ -117,6 +117,7 @@ function Vis(num, x, y, started, question) {
     this.centerY = centerY
     this.closeLid = 100
     var scn3Ready = false
+    var x2,y2,x3,y3;
 
     //call this on p5's window resize function
     this.resize = function() {
@@ -200,8 +201,8 @@ function Vis(num, x, y, started, question) {
             textSize(40)
             textAlign(CENTER)
             fill(colors[0])
-            text('YES', this.x + (dimsX * .20), this.y + (dimsY * .15))
-            text('NO', this.x + (dimsX * .80), this.y + (dimsY * .85))
+            text('NO', this.x + (dimsX * .20), this.y + (dimsY * .15))
+            text('YES', this.x + (dimsX * .80), this.y + (dimsY * .85))
 
 
         } else if (num == 2) {
@@ -211,6 +212,8 @@ function Vis(num, x, y, started, question) {
             q2CJS = q3Answers.filter(function(x) {
                 return x == 'Chart'
             }).length
+            var totalAnswers = q2CJS+q2D3
+            // console.log(totalAnswers)
             var D3height = map(q2D3, 0, 16, 20, dimsY * .9)
             var D3rad = map(q2D3, 0, 16, 0, 120)
             var CJSheight = map(q2CJS, 0, 16, 20, dimsY * .9)
@@ -219,14 +222,24 @@ function Vis(num, x, y, started, question) {
             stroke(colors[1])
             strokeWeight(12.0);
             strokeCap(ROUND);
+            var lineHeightAvg = this.centerY + (dimsY * .08)
+            var L = dimsX*.45
+            x2=this.centerX-L
+            x3=x2+2*L
+            y2 = map(q2D3, 0, totalAnswers, lineHeightAvg-dimsY*.3, lineHeightAvg+dimsY*.3)
+            y3 = map(q2CJS, 0, totalAnswers, lineHeightAvg-dimsY*.3, lineHeightAvg+dimsY*.3)
 
-            triangle(this.centerX, this.centerY + (dimsY * .08), this.centerX + (dimsX * .24), this.centerY + (dimsY * .35), this.centerX - (dimsX * .24), this.centerY + (dimsY * .35));
+
+
+            triangle(this.centerX, lineHeightAvg+(dimsY*.01), this.centerX + (dimsX * .24), this.centerY + (dimsY * .35), this.centerX - (dimsX * .24), this.centerY + (dimsY * .35));
             stroke(colors[5])
-            line(this.x + (dimsX * .15), this.y + D3height, this.x + (dimsX * .85), CJSheight);
+            line(this.centerX, lineHeightAvg, x2, y2)
+            line(this.centerX, lineHeightAvg, x3, y3)
+            // line(this.x + (dimsX * .15), this.y + D3height, this.x + (dimsX * .85), CJSheight);
             fill(colors[3])
             stroke(colors[3])
-            ellipse(this.x + (dimsX * .20), this.y + D3height - (D3rad * .6), D3rad, D3rad)
-            ellipse(this.x + (dimsX * .80), this.y + CJSheight - (CJSrad * .6), CJSrad, CJSrad)
+            ellipse(this.x + (dimsX * .20), this.y + y2 - (D3rad * .5+12), D3rad, D3rad)
+            ellipse(this.x + (dimsX * .80), this.y + y3 - (CJSrad * .5+12), CJSrad, CJSrad)
             noStroke()
             textSize(40)
             textAlign(CENTER)
@@ -237,12 +250,12 @@ function Vis(num, x, y, started, question) {
         } else if (num == 3) {
 
             q4Results[0] = q4Answers.filter(function(x) {
-                return x != "el.style.display='none'"
+                return x != "el.style.display = 'none'"
             }).length
             q4Results[1] = q4Answers.filter(function(x) {
-                    return x == "el.style.display='none'"
+                    return x == "el.style.display = 'none'"
                 }).length
-                // console.log(this.started)
+                // console.log(q4Results[1])
             var moveUp = 0
 
             var destination = this.y + (dimsY * .15)
