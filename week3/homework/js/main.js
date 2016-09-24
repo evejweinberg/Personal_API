@@ -1,3 +1,5 @@
+var table;
+
 function preload() {
     // var url = 'data/data.json';
     // loadedJSON = loadJSON(url);
@@ -19,7 +21,8 @@ function windowResized() {
 
 function setup() {
     //temp usage of a google spreadsheet to test incoming data to variables
-    var url = 'https://docs.google.com/spreadsheets/d/1hFS6zEkE_nrIVhsf4ESZi8UzQ_2cD4gNZGski1YGyPg/pubhtml';
+    var url = "https://docs.google.com/spreadsheets/d/1cfKGJSZkAcqkaEwFFzr7LIaFs__M2ok2ijWo8j6M0_k/pubhtml";
+    var url2 = 'https://docs.google.com/spreadsheets/d/1hFS6zEkE_nrIVhsf4ESZi8UzQ_2cD4gNZGski1YGyPg/pubhtml';
     // Tabletop expects some settings
     var settings = {
         key: url, // The url of the published google sheet
@@ -28,14 +31,15 @@ function setup() {
     }
 
     // Make the request
-    Tabletop.init(settings);
+    table = Tabletop.init(settings);
+
 
 
     var cnv = createCanvas(windowWidth, windowHeight);
     //position canvas absolutely
     cnv.position(0, 0);
     background(color('#FFFFA2'));
-    colors = [color('#FFFFA2'), color('#271A61'), color('#D4B8FF'), color('#FF6777'), color('#3DCCFF'), color('#BFFABC')]
+    colors = [color('#FFFFA2'), color('#271A61'), color('#D4B8FF'), color('#FF6777'), color('#3DCCFF'), color('#b3f7af')]
     dimsX = (windowWidth / (total / 2))
     dimsY = (windowHeight / 2)
 
@@ -43,14 +47,35 @@ function setup() {
     createAllVis();
 
 
-}
+} //setup over
 
+function updateAllData(data) {
+    for (i in data) {
+        q1Results[i] = data[i]['Q1: Where did you get your data from?'];
+        q2Answers[i] = data[i]['Q2:Did you do any JS before ITP?'];
+        q3Answers[i] = data[i]['Q3: Would you rather do D3 or Chart JS?'];
+        q4Answers[i] = data[i]["Q4: Whats'the javascript version of this?"];
+        q5Answers[i] = data[i]["Q5: How good at javascript are you?"];
+        //
+        // if (q4Answers[i] == "el.style.display='none'"){
+        //
+        // }
+
+        // console.log(q1Results)
+        // console.log(data[i]['Q3: Would you rather do D3 or Chart JS?'])
+
+    }
+}
+//the callback from the table top initializing
 function gotData(data) {
-    //a product on the Tabletop library
-    // console.log(data)
+    // for (i in data){
+    setInterval(table.fetch(updateAllData(data)), 5000)
+        // }
 }
 
 function draw() {
+
+    // gotData();
     background(colors[2]);
 
     for (var i = 0; i < total; i++) {
@@ -126,7 +151,6 @@ function Vis(num, x, y, started, question) {
         if (num == 0) {
 
             for (var i = 0; i < 16; i++) {
-                // console.log(q1Answers[i])
                 textSize(18)
                 var col = colors[i % colors.length]
                 if (i < 8) {
@@ -137,8 +161,10 @@ function Vis(num, x, y, started, question) {
                     } else {
                         fill(colors[0])
                     }
+                    if (q1Results[i] != '') {
 
-                    text(q1Answers[i], this.x + 10, this.y + (dimsY / 8 * i) + (dimsY / 16))
+                        text(q1Results[i], this.x + 10, this.y + (dimsY / 8 * i) + (dimsY / 16))
+                    }
                 } else {
 
                     fill(col)
@@ -148,14 +174,21 @@ function Vis(num, x, y, started, question) {
                     } else {
                         fill(colors[0])
                     }
-                    text(q1Answers[i], this.x + dimsX / 2 + 10, this.y + (dimsY / 8 * [i % 8]) + +(dimsY / 16))
-
+                    if (q1Results[i] != '') {
+                        text(q1Results[i], this.x + dimsX / 2 + 10, this.y + (dimsY / 8 * [i % 8]) + +(dimsY / 16))
+                    }
                 }
 
             }
         } else if (num == 1) {
-          q2Results[0] = q2Answers.filter(function(x){return x==1}).length
-          q2Results[1] = q2Answers.filter(function(x){return x==0}).length
+            q2Results[0] = q2Answers.filter(function(x) {
+                return x == 'yes'
+            }).length
+            q2Results[1] = q2Answers.filter(function(x) {
+                return x == 'no'
+            }).length
+
+            // console.log(q2Results)
 
 
             push();
@@ -172,8 +205,12 @@ function Vis(num, x, y, started, question) {
 
 
         } else if (num == 2) {
-          q2D3 = q3Answers.filter(function(x){return x==0}).length
-          q2CJS = q3Answers.filter(function(x){return x==1}).length
+            q2D3 = q3Answers.filter(function(x) {
+                return x == 'D3'
+            }).length
+            q2CJS = q3Answers.filter(function(x) {
+                return x == 'Chart'
+            }).length
             var D3height = map(q2D3, 0, 16, 20, dimsY * .9)
             var D3rad = map(q2D3, 0, 16, 0, 120)
             var CJSheight = map(q2CJS, 0, 16, 20, dimsY * .9)
@@ -198,9 +235,14 @@ function Vis(num, x, y, started, question) {
             text('CJS', this.x + (dimsX * .80), this.y + (dimsY * .15))
 
         } else if (num == 3) {
-          q4Results[0] = q4Answers.filter(function(x){return x==1}).length
-          q4Results[1] = q4Answers.filter(function(x){return x==0}).length
-        // console.log(this.started)
+
+            q4Results[0] = q4Answers.filter(function(x) {
+                return x != "el.style.display='none'"
+            }).length
+            q4Results[1] = q4Answers.filter(function(x) {
+                    return x == "el.style.display='none'"
+                }).length
+                // console.log(this.started)
             var moveUp = 0
 
             var destination = this.y + (dimsY * .15)
@@ -212,7 +254,7 @@ function Vis(num, x, y, started, question) {
                 textSize(40)
                 text("$(el).hide();", this.centerX, this.centerY)
                 if (mouseIsPressed && mouseX < this.x + dimsX && mouseY > dimsY) {
-                    console.log('scene 3 mouse was pressed')
+                    // console.log('scene 3 mouse was pressed')
                     scn3Ready = true
 
                 }
@@ -222,23 +264,23 @@ function Vis(num, x, y, started, question) {
                 fill(colors[5])
                 textAlign(CENTER)
                 textSize(40)
-                text("$(el).hide();", this.centerX, this.centerY-100)
+                text("$(el).hide();", this.centerX, this.centerY - 100)
                 fill(colors[4])
                 textAlign(CENTER)
                 textSize(30)
                 text("el.style.display = 'none'", this.centerX, this.centerY)
                 fill(colors[2])
                 var i = 0
-                // console.log(-7*q4Results[1])
-                while (i < q4Results[1]){
-                  if (i < 6){
+                    // console.log(-7*q4Results[1])
+                while (i < q4Results[1]) {
+                    if (i < 6) {
 
-                    ellipse(this.x+dimsX*.2+(i*50), this.y+dimsY*.7,40,40)
-                  } else {
-                    ellipse(this.x+dimsX*.2+([i%6]*50), this.y+dimsY*.86,40,40)
+                        ellipse(this.x + dimsX * .2 + (i * 50), this.y + dimsY * .7, 40, 40)
+                    } else {
+                        ellipse(this.x + dimsX * .2 + ([i % 6] * 50), this.y + dimsY * .86, 40, 40)
 
-                  }
-                  i++
+                    }
+                    i++
                 }
                 // rect(this.x+dimsX*.2, this.y+dimsY*.8,60,-7*q4Results[0])
                 // rect(this.x+dimsX*.7, this.y+dimsY*.8,60,-7*q4Results[1])
@@ -247,9 +289,11 @@ function Vis(num, x, y, started, question) {
         } else
         if (num == 4) {
 
+          noStroke()
             fill(colors[0])
-            noStroke()
             ellipse(this.centerX, this.centerY, dimsX * .6, dimsX * .6)
+            fill(colors[5])
+            ellipse(this.centerX, this.centerY, dimsX * .35, dimsX * .35)
             for (i in q5Answers) {
                 q5Radius[i] = map(q5Answers[i], 1, 10, dimsX * .31, 0)
                 fill(colors[3])
@@ -259,42 +303,42 @@ function Vis(num, x, y, started, question) {
                 ellipse(x, y, 16, 16)
             }
         } else if (num == 5) {
-          eyeoffset = dimsX*.2
-          bagPull = map(tiredAvg, 0, 10, eyeBagPullMax,0)
+            eyeoffset = dimsX * .2
+            bagPull = map(tiredAvg, 0, 10, eyeBagPullMax, 0)
 
             fill(colors[0])
             strokeWeight(8)
             stroke(colors[1])
-            ellipse(this.centerX + eyeoffset, this.y + (dimsY * .3), pupilRad*1.5,pupilRad*1.5)
-            ellipse(this.centerX - eyeoffset, this.y + (dimsY * .3), pupilRad*1.5,pupilRad*1.5)
+            ellipse(this.centerX + eyeoffset, this.y + (dimsY * .3), pupilRad * 1.5, pupilRad * 1.5)
+            ellipse(this.centerX - eyeoffset, this.y + (dimsY * .3), pupilRad * 1.5, pupilRad * 1.5)
             fill(colors[1])
-            ellipse(this.centerX + eyeoffset, this.y + (dimsY * .3), pupilRad*.45, pupilRad*.45)
-            ellipse(this.centerX - eyeoffset, this.y + (dimsY * .3), pupilRad*.45, pupilRad*.45)
-              noStroke();
-              fill(colors[0])
-              ellipse(this.centerX + eyeoffset, this.y + (dimsY * .29), pupilRad*.1,pupilRad*.1)
-              ellipse(this.centerX - eyeoffset, this.y + (dimsY * .29), pupilRad*.1,pupilRad*.1)
+            ellipse(this.centerX + eyeoffset, this.y + (dimsY * .3), pupilRad * .45, pupilRad * .45)
+            ellipse(this.centerX - eyeoffset, this.y + (dimsY * .3), pupilRad * .45, pupilRad * .45)
+            noStroke();
+            fill(colors[0])
+            ellipse(this.centerX + eyeoffset, this.y + (dimsY * .29), pupilRad * .1, pupilRad * .1)
+            ellipse(this.centerX - eyeoffset, this.y + (dimsY * .29), pupilRad * .1, pupilRad * .1)
             strokeWeight(6)
             stroke(colors[4])
             noFill();
             strokeCap(ROUND)
             var i = 0
-            while (i < tiredAvg){
-              bezier(this.centerX , (dimsY*.3)+ pupilRad+ this.y + i*(dimsY * .05), this.centerX + eyeoffset+30, this.y + i*(dimsY * .3)+100, this.centerX + eyeoffset+100, this.y + i*(dimsY * .35)+100, this.centerX + eyeoffset+pupilRad, (dimsY*.3)+ pupilRad+ this.y + i*(dimsY * .05));
-              i++
+            while (i < tiredAvg) {
+                bezier(this.centerX, (dimsY * .3) + pupilRad + this.y + i * (dimsY * .05), this.centerX + eyeoffset + 30, this.y + i * (dimsY * .3) + 100, this.centerX + eyeoffset + 100, this.y + i * (dimsY * .35) + 100, this.centerX + eyeoffset + pupilRad, (dimsY * .3) + pupilRad + this.y + i * (dimsY * .05));
+                i++
             }
-stroke(colors[3])
-            bezier(this.x+(dimsX*.15), this.y + (dimsY*.8), this.centerX , this.y + dimsY+bagPull, this.centerX, this.y + dimsY+bagPull, this.x+(dimsX*.15), this.y + (dimsY*.8));
+            stroke(colors[3])
+            bezier(this.x + (dimsX * .15), this.y + (dimsY * .8), this.centerX, this.y + dimsY + bagPull, this.centerX, this.y + dimsY + bagPull, this.x + (dimsX * .15), this.y + (dimsY * .8));
 
-                // bezier curve for mouth
-                //bezier curves for under eye bags
+            // bezier curve for mouth
+            //bezier curves for under eye bags
 
             fill(colors[3])
             noStroke();
             //bezier curve for nose or upload file
             //add eye lids with path or poly
-            eyelid(this.centerX + (eyeoffset*.3),this.y + (dimsY * .3),this.centerX + (eyeoffset*2),this.y + (dimsY * .3),bagPull, 'right')
-            eyelid(this.centerX - (eyeoffset*.3),this.y + (dimsY * .3),this.centerX - (eyeoffset*2),this.y + (dimsY * .3),bagPull, 'left')
+            eyelid(this.centerX + (eyeoffset * .3), this.y + (dimsY * .3), this.centerX + (eyeoffset * 2), this.y + (dimsY * .3), bagPull, 'right')
+            eyelid(this.centerX - (eyeoffset * .3), this.y + (dimsY * .3), this.centerX - (eyeoffset * 2), this.y + (dimsY * .3), bagPull, 'left')
 
 
 
@@ -353,21 +397,21 @@ function q1Polygon(x, y, radius, npoints, answer) {
 
 }
 
-function eyelid(startx, starty,endx,endy,pulllid, side){
-  if (side == 'right'){
-  beginShape();
-  vertex(startx, starty);
+function eyelid(startx, starty, endx, endy, pulllid, side) {
+    if (side == 'right') {
+        beginShape();
+        vertex(startx, starty);
 
 
-  bezierVertex(startx-10, starty-100, startx+90, starty-100, endx, endy);
-  bezierVertex(endx, endy, startx+90, starty-pulllid, startx, starty);
-  endShape();
-} else{
-  beginShape();
-  vertex(startx, starty);
-  bezierVertex(startx+10, starty-100, startx-100, starty-100, endx, endy);
-  bezierVertex(endx, endy, startx-100, starty-pulllid, startx, starty);
-  endShape();
+        bezierVertex(startx - 10, starty - 100, startx + 90, starty - 100, endx, endy);
+        bezierVertex(endx, endy, startx + 90, starty - pulllid, startx, starty);
+        endShape();
+    } else {
+        beginShape();
+        vertex(startx, starty);
+        bezierVertex(startx + 10, starty - 100, startx - 100, starty - 100, endx, endy);
+        bezierVertex(endx, endy, startx - 100, starty - pulllid, startx, starty);
+        endShape();
 
-}
+    }
 }

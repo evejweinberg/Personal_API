@@ -1,7 +1,7 @@
 
 //some test numbers that will get replaced
 var totalNum = [1,2,3,4,5,6];
-var q1Answers=['', '', 'the place where', 'not sure yet still deciding', "googles traffic data", 'suuuuuuuuuuup long words', 'goverment free data', 'five thiry eight','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where']
+var q1Results=['', '', 'the place where', 'not sure yet still deciding', "googles traffic data", 'suuuuuuuuuuup long words', 'goverment free data', 'five thiry eight','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where','internet', 'nyc.gov', 'the place where']
 var q2Answers=[1,1,1,1,0,1,0,1,0,1,0,1,1,0,1,0]
 var q2Results=[8,8]
 var q3Answers=[1,1,1,1,0,1,0,1,0,1,0,1,1,0,1,0]
@@ -19,15 +19,6 @@ var angle = 0
 
 //----------calculate results//-----------//
 tiredAvg = getAvg(q6Answers)
-
-// q2Results[0] = q2Answers.filter(function(x){return x==1}).length
-// q2Results[1] = q2Answers.filter(function(x){return x==0}).length
-
-// q4Results[0] = q4Answers.filter(function(x){return x==1}).length
-// q4Results[1] = q4Answers.filter(function(x){return x==0}).length
-
-// q2D3 = q3Answers.filter(function(x){return x==0}).length
-// q2CJS = q3Answers.filter(function(x){return x==1}).length
 
 q5Radius = q5Answers.map(function(x){return (x/10)*150})
 
@@ -65,11 +56,7 @@ function checkSizes(){
   $(".box > p").height(t*.7)
 }
 
-// function Changetop5(el){
-//   $(el).fadeOut();
-//   $(el).css("background-color", "transparent")
-//   graphics[0].started=true
-// }
+
 
 function Run0(){
   $('#box0 > p').fadeOut();
