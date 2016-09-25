@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eve & Joy - Live Data Vis</title>
+
+    <!-- Custom Font -->
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--socket-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect();
+        //the data source question
+        var theAnswer00 = ['-', '-', '-', '-', "-", '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
+
+        // the yes no JS question
+        var theAnswer01 = ['yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'no', ]
+            //start even keeled
+        var q2Results = [8, 8]
+            //d3 or chartjs
+        var theAnswer02 = ['d3', 'chartjs', 'd3', 'chartjs', 'd3', 'chartjs', 'd3', 'chartjs', 'd3', 'chartjs', 'd3', 'chartjs', 'd3', 'chartjs', 'd3', 'chartjs']
+
+        // jquery quiz
+        var theAnswer03 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        // var q4Answers=[0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0] //quiz right or wrong
+        var q4Results = [8, 8]
+
+        // your JS level
+        var theAnswer04 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        var q5Radius = [160, 140, 10, 160, 100, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160, 160]
+            // var theAnswer04 = [];
+            //how tired are you?
+        var theAnswer05 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //how tired
+
+        // var theAnswer05 = [];
+
+        socket.on('connect', function() {
+            console.log("Connected");
+        });
+
+        socket.on('display00', function(data) {
+            theAnswer00.unshift(data);
+            console.log(theAnswer00);
+        });
+
+        socket.on('display01', function(data) {
+            theAnswer01.unshift(data);
+            theAnswer01.pop()
+
+            console.log(theAnswer01);
+        });
+
+        socket.on('display02', function(data) {
+            theAnswer02.unshift(data);
+            theAnswer02.pop()
+            console.log(theAnswer02);
+        });
+
+        socket.on('display03', function(data) {
+            theAnswer03.unshift(data);
+            theAnswer03.pop()
+            console.log(theAnswer03);
+        });
+
+        socket.on('display04', function(data) {
+            theAnswer04.unshift(data);
+            theAnswer04.pop();
+            console.log(theAnswer04);
+        });
+
+        socket.on('display05', function(data) {
+            theAnswer05.unshift(data);
+            theAnswer05.pop();
+            console.log(theAnswer05);
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+<div class="container">
+
+
+
+    <div class="row">
+        <div id='box0' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <p>1</p>
+        </div>
+        <div id='box1' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <p>2</p>
+        </div>
+        <div id='box2' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <p>3</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div id='box3' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <p>4</p>
+        </div>
+        <div id='box4' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <p>5</p>
+        </div>
+        <div id='box5' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <p>6</p>
+        </div>
+
+    </div>
+
+    <!-- <canvas id="myCanvas" resize></canvas> -->
+</div>
+
+
+<!-- JQuery - Can remove if not using -->
+<script src="js/tabletop.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- p5JS -->
+<script src="js/p5.js"></script>
+<script src="js/p5dom.js"></script>
+
+<!-- OUR JS -->
+<script src="js/rawjs.js"></script>
+<script src="js/main.js"></script>
+
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eve & Joy - Live Data Vis</title>
+
+    <!-- Custom Font -->
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--checkbox-->
+    <script type="text/javascript">
+        function getCheckedCheckboxesFor(checkboxName) {
+            var checkboxes = document.querySelectorAll('input[name="' + checkboxName + '"]:checked'),
+                values = [];
+            Array.prototype.forEach.call(checkboxes, function(el) {
+                values.push(el.value);
+            });
+            return values;
+        }
+    </script>
+
+    <!--socket-->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect();
+
+        socket.on('connect', function() {
+            console.log("Connected");
+        });
+
+        var submitAnswer00 = function() {
+            var answer00 = document.getElementById('answer00').value;
+            console.log("Answer 1: " + answer00);
+            socket.emit('answer00', answer00);
+        }
+        var submitAnswer01 = function() {
+            var answer01 = getCheckedCheckboxesFor('yesno');
+            console.log("Answer 2: " + answer01[0]);
+            socket.emit('answer01', answer01[0]);
+        }
+
+        var submitAnswer02 = function() {
+            var answer02 = getCheckedCheckboxesFor('d3');
+            console.log("Answer 3: " + answer02[0]);
+            socket.emit('answer02', answer02[0]);
+        }
+
+        var submitAnswer03 = function() {
+
+            var answer03 = document.getElementById('answer03').value;
+            if (answer03 == "el.style.display = 'none'") {
+                console.log("Answer 4: " + answer03);
+                socket.emit('answer03', answer03);
+
+            } else {
+                alert('So close! Try again! Hint: display = "none" ')
+            }
+
+        }
+
+        var submitAnswer04 = function() {
+            var answer04 = document.getElementById('answer04').value;
+            console.log("Answer 5: " + answer04);
+            socket.emit('answer04', answer04);
+        }
+
+        var submitAnswer05 = function() {
+            var answer05 = document.getElementById('answer05').value;
+            console.log("Answer 6: " + answer05);
+            socket.emit('answer05', parseInt(answer05));
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+</body>
+<div class="container">
+
+
+
+    <div class="row">
+        <div id='box0' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <h1>Where did you get your data from?</h1>
+            <input id="answer00" placeholder="Your Answer" autofocus>
+            <button id="submit" onclick='submitAnswer00()'>Submit</button>
+        </div>
+        <div id='box1' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <h1>Did you do any JS before ITP?</h1>
+            <input type="checkbox" name="yesno" value="yes"> Yes &nbsp;
+            <input type="checkbox" name="yesno" value="no"> No <br>
+            <button id="submit" onclick='submitAnswer01()'>Submit</button>
+        </div>
+        <div id='box2' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <h1>Would you rather do D3 or Chart JS?</h1>
+            <input type="checkbox" name="d3" value="d3"> D3 &nbsp;
+            <input type="checkbox" name="d3" value="chartjs"> Chart Js<br>
+            <button id="submit" onclick='submitAnswer02()'>Submit</button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div id='box3' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <h1>Whats' the correct javascript version of this jquery thing?</h1>
+            <input id="answer03" placeholder="Good Luck!" autofocus>
+            <button id="submit" onclick='submitAnswer03()'>Submit</button>
+        </div>
+        <div id='box4' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <h1>How good at javascript are you?</h1>
+            <input type='number' min='0' max='10' id="answer04" placeholder="5" autofocus>
+            <button id="submit" onclick='submitAnswer04()'>Submit</button>
+        </div>
+        <div id='box5' class="col-lg-4 col-md-4 col-sm-4 col-xs-4 box">
+            <h1>How tired are you right now?</h1>
+            <input type='number' min='0' max='10' id="answer05" placeholder="5" autofocus>
+            <button id="submit" onclick='submitAnswer05()'>Submit</button>
+        </div>
+
+    </div>
+
+    <!-- <canvas id="myCanvas" resize></canvas> -->
+</div>
+
+
+<!-- JQuery - Can remove if not using -->
+<!-- <script src="js/tabletop.js"></script> -->
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
+<!-- p5JS -->
+<script src="js/p5.js"></script>
+<script src="js/p5dom.js"></script>
+
+<!-- OUR JS -->
+<script src="js/rawjs.js"></script>
+<script src="js/main.js"></script>
+
+</html>
