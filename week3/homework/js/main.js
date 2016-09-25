@@ -61,7 +61,7 @@ function updateAllData(data) {
         //
         // }
 
-        console.log(q4Answers[i])
+        // console.log(q4Answers[i])
         // console.log(data[i]['Q3: Would you rather do D3 or Chart JS?'])
 
     }
@@ -318,6 +318,7 @@ function Vis(num, x, y, started, question) {
         } else if (num == 5) {
             eyeoffset = dimsX * .2
             bagPull = map(tiredAvg, 0, 10, eyeBagPullMax, 0)
+            mouthpull = map(tiredAvg,0,10,.3,-.3)
 
             fill(colors[0])
             strokeWeight(8)
@@ -335,13 +336,37 @@ function Vis(num, x, y, started, question) {
             stroke(colors[4])
             noFill();
             strokeCap(ROUND)
-            var i = 0
-            while (i < tiredAvg) {
-                bezier(this.centerX, (dimsY * .3) + pupilRad + this.y + i * (dimsY * .05), this.centerX + eyeoffset + 30, this.y + i * (dimsY * .3) + 100, this.centerX + eyeoffset + 100, this.y + i * (dimsY * .35) + 100, this.centerX + eyeoffset + pupilRad, (dimsY * .3) + pupilRad + this.y + i * (dimsY * .05));
+            //bags under eyes
+            var i = 1
+            var startbagY = (dimsY * .2) + pupilRad + this.y
+            while (i < tiredAvg-1) {
+              bezier(
+              this.centerX-40,
+              startbagY + i * (dimsY * .05),
+              this.centerX-40,
+              startbagY + i * (dimsY * .05)+(i*20),
+              this.centerX - (dimsX*.35),
+              startbagY + i * (dimsY * .05)+(i*20),
+              this.centerX - (dimsX*.35),
+              startbagY + i * (dimsY * .05)
+              );
+              //start x, starty, pullx, pully, pullx, pully,end x, endy
+                bezier(
+                this.centerX+40,
+                startbagY + i * (dimsY * .05),
+                this.centerX+40,
+                startbagY + i * (dimsY * .05)+(i*20),
+                this.centerX + (dimsX*.35),
+                startbagY + i * (dimsY * .05)+(i*20),
+                this.centerX + (dimsX*.35),
+                startbagY + i * (dimsY * .05)
+                );
                 i++
             }
+            // mouth
             stroke(colors[3])
-            bezier(this.x + (dimsX * .15), this.y + (dimsY * .8), this.centerX, this.y + dimsY + bagPull, this.centerX, this.y + dimsY + bagPull, this.x + (dimsX * .15), this.y + (dimsY * .8));
+
+            bezier(this.x + (dimsX * .15), this.y + (dimsY * .7), this.x + (dimsX * .15), this.y + (dimsY * .7)+ (dimsY * mouthpull), this.x + (dimsX * .75), this.y + (dimsY * .7) + (dimsY * mouthpull), this.x + (dimsX * .75), this.y + (dimsY * .7));
 
             // bezier curve for mouth
             //bezier curves for under eye bags

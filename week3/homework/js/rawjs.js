@@ -13,7 +13,7 @@ var q6Answers=[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9] //how tired
 var eyeoffset = 60
 var pupilRad = 60
 var eyeBagPullMax = 100;
-var bagPull,tiredAvg,q2D3,q2CJS;
+var bagPull,tiredAvg,q2D3,q2CJS, mouthpull;
 var angle = 0
 
 
