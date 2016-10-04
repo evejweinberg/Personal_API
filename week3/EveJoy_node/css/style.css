@@ -10,16 +10,21 @@ body {
     font-family: 'Dosis'
 }
 
+.row {
+    height: 50vh;
+}
+
 .container {
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: 10;
     width: 100%;
+    height: 100vh;
 }
 
 .box {
-    font-size:2em;
+    font-size: 2em;
     min-height: 350px;
     max-height: 900px;
     /*margin: auto;*/
@@ -34,12 +39,12 @@ body {
 
 .box>h1 {
     margin: 65px auto;
-    font-size:2em;
+    font-size: 2em;
 }
 
-#submit{
-    margin-bottom:0.5em;
-    margin-top:0.5em;
+#submit {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
 }
 
 #box0 {
